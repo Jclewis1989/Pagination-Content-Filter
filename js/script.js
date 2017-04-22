@@ -7,70 +7,79 @@ ____________________________________________
 
 // Global variables
 
-var students = document.querySelectorAll('li');
-var pages = Math.ceil(students); // 10 Students per page? We will see how this works
+var studentList = document.querySelectorAll('LI');
+
+var totalPages = Math.ceil(studentList.length / 10);
+
+container = document.querySelector('.page');
+
+// Create HTML Elements
+pagination = document.createElement('DIV');
+paginationUl = document.createElement('UL');
+
+// Provide class Names & HREF Attribute
+pagination.className = ('pagination');
+
+// Place pagination div in the .page div
+container.appendChild(pagination);
+
+// Place unordered list and links within the .pagination div
+pagination.appendChild(paginationUl);
 
 // When the page loads, your program should hide all but the first 10 students in the list.
 
-function loadTen() {
-    var ul = document.getElementsByTagName('ul')[0];
-    var li = document.querySelectorAll('li');
-    for (var i = 10; i < li.length; i++) {
-        if(ul) {
-            ul.removeChild(li[i]);
+// element.style.display = 'none' OR 'block' to show
+
+window.addEventListener('load', function () {
+    for (var i = 10; i < studentList.length; i++) {
+        if (studentList[i]) {
+            studentList[i].style.display = 'none';
+        } else {
+            return false;
         }
     }
-}
-
-document.onload = loadTen();
-
-// element.style.display = 'none' OR 'block' to show...
-
+});
 
 
 // Look at the HTML in the example-meets.html on lines 119-137 -- this is an example of the markup you'll need to add dynamically to the index.html page to create pagination links.
 
+// Create Remaining Elements
+var li = document.createElement('li');
 
-function createHTML() {
-    // Create the div container
-    var div = document.createElement('div');
-    div.className = 'pagination';
-    div.textContent = 'DIV IS HERE'; // Testing div with textContent
-    document.body.appendChild(div);
-    var divPage = document.querySelector('div.page ul');
-    divPage.parentNode.insertBefore(div, divPage.nextSibling);
-}
-
-createHTML();
-
-
-/* 
-NOT DYNAMIC - Instructions are clear to dynamically add the div .pagination
-function createHMTML() {
-    var html = '<div class="pagination"><ul><li><a class="active" href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li></ul></div>'
-    var divPage = document.querySelector('div.page ul');
-    divPage.parentNode.insertBefore(html, divPage.nextSibling);
-}
-
-createHTML();
-
-*/
+// Append Elements to the DOM
+paginationUl.appendChild(li);
 
 // Since only 10 students should be shown at a time, your programming needs to calculate the number of pages needed and add the appropriate number of links to the bottom of the page.
 
+function paginateList() {
+    for (var i = 0; i < totalPages + 1; i++) {
+        if (i === 1) {
+            var html = '<li><a href="#" class="active">' + i + '</a></li>';
+            paginationUl.innerHTML = html;
+        } else if (i > 1) {
+            html += '<li><a href="#">' + i + '</a></li>';
+            paginationUl.innerHTML = html;
+        }
+    }
+}
+
+paginateList();
+
 // When a user clicks on “2” in the pagination, students 11 through 20 are shown. When a user clicks “3”, students 21 through 30 are shown. And so on. When “6” is clicked 51 through 55 should be shown.
+
+var currentLink = document.querySelector('.active');
+
+currentLink.addEventListener('click', function () {
+    
+});
 
 // Your program should work for any number of students. There are 54 students in index.html, but you can test your code by adding the JavaScript file your write to the other lists of students we’ve provided in the student-list-examples folder.
 
 
-
-
-// Event Listeners
-
 /*
 
 Exceed Requirements!
-____________________________________________
+    ____________________________________________
 
 */
 
@@ -79,3 +88,13 @@ ____________________________________________
 // When the "Search" button is clicked, the list of students is filtered to match the search. For example if the name Phillip is typed into the box list all students whose name or email includes Phillip.
 
 // If no matches are found by the search, include a message in the HTML to tell the user there are no matches.
+
+
+
+
+
+
+
+
+
+// PRACTICE ____________________________________________________________
