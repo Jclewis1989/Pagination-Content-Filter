@@ -52,7 +52,6 @@ paginationLinks();
 // When a user clicks on “2” in the pagination, students 11 through 20 are shown. When a user clicks “3”, students 21 through 30 are shown. And so on. When “6” is clicked 51 through 55 should be shown.
 //
 
-
 function paginateLink() {
     var links = document.querySelector('.pagination');
     links.addEventListener('click', function (e) {
