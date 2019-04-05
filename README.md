@@ -1,6 +1,6 @@
 # Pagination with JS
 
-I was given the task from a Team House Tech Degree to work on some pagination without Bootstrap 3 or 4.
+I was given the task from a Team Tree House Tech Degree to work on some pagination without Bootstrap 3 or 4.
 
 ## Getting Started
 
